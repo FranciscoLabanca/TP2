@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    public class Modulo : BusinessEntity
+    public class Comision : BusinessEntity
     {
+        public int AnioEspecialidad { get; set; }
         public string Descripcion { get; set; }
+        public int IDPlan { get; set; }
     }
 }
