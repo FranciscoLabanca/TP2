@@ -12,7 +12,17 @@ namespace Business.Logic
     public class UsuarioLogic : BusinessLogic
     {
         private UsuarioAdapter _UsuarioData;
-        public UsuarioAdapter UsuarioData { get; set; }
+        public UsuarioAdapter UsuarioData 
+        {
+            get
+            {
+                return _UsuarioData;
+            } 
+            set
+            {
+                _UsuarioData = value;
+            }
+        }
         public UsuarioLogic(UsuarioAdapter usuarioData)
         {
             _UsuarioData = usuarioData;

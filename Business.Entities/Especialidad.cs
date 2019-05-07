@@ -8,6 +8,17 @@ namespace Business.Entities
 {
     public class Especialidad : BusinessEntity
     {
-        public string Descripcion { get; set; }
+    	private string _Descripcion;
+        public string Descripcion 
+        {
+        	get
+        	{
+        		return _Descripcion;
+        	} 
+        	set
+        	{
+        		_Descripcion = value;
+        	}
+        }
     }
 }
