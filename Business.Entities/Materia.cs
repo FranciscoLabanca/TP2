@@ -8,9 +8,53 @@ namespace Business.Entities
 {
     public class Materia : BusinessEntity
     {
-        public string Descripcion { get; set; }
-        public int HSSemanales { get; set; }
-        public int HSTotales { get; set; }
-        public int IDPlan { get; set; }
+    	private string _Descripcion;
+        public string Descripcion 
+        {
+        	get
+        	{
+        		return _Descripcion;
+        	} 
+        	set
+        	{
+        		_Descripcion = value;
+        	}
+        }
+        private int _HSSemanales;
+        public int HSSemanales 
+        {
+        	get
+        	{
+        		return _HSSemanales;
+        	} 
+        	set
+        	{
+        		_HSSemanales = value;
+        	}
+        }
+        private int _HSTotales;
+        public int HSTotales 
+        {
+        	get
+        	{
+        		return _HSTotales;
+        	} 
+        	set
+        	{
+        		_HSTotales = value;
+        	}
+        }
+        private int _IDPlan;
+        public int IDPlan 
+        {
+        	get
+        	{
+        		return _IDPlan;
+        	} 
+        	set
+        	{
+        		_IDPlan = value;
+        	}
+        }
     }
 }

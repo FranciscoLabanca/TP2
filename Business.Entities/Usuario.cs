@@ -6,13 +6,79 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    public class Usuario
+    public class Usuario : BusinessEntity
     {
-        public string NombreUsuario { get; set; }
-        public string Clave { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Email { get; set; }
-        public bool Habilitado { get; set; }
+    	private string _NombreUsuario;
+        public string NombreUsuario 
+        {
+        	get
+        	{
+        		return _NombreUsuario;
+        	} 
+        	set
+        	{
+        		_NombreUsuario = value;
+        	}
+        }
+        private string _Clave;
+        public string Clave 
+        {
+        	get
+        	{
+        		return _Clave;
+        	} 
+        	set
+        	{
+        		_Clave = value;
+        	}
+        }
+        private string _Nombre;
+        public string Nombre 
+        {
+        	get
+        	{
+        		return _Nombre;
+        	} 
+        	set
+        	{
+        		_Nombre = value;
+        	}
+        }
+        private string _Apellido;
+        public string Apellido 
+        {
+        	get
+        	{
+        		return _Apellido;
+        	} 
+        	set
+        	{
+        		_Apellido = value;
+        	}
+        }
+        private string _EMail;
+        public string EMail 
+        {
+        	get
+        	{
+        		return _EMail;
+        	} 
+        	set
+        	{
+        		_EMail = value;
+        	}
+        }
+        private bool _Habilitado;
+        public bool Habilitado 
+        {
+        	get
+        	{
+        		return _Habilitado;
+        	} 
+        	set
+        	{
+        		_Habilitado = value;
+        	}
+        }
     }
 }
