@@ -23,6 +23,11 @@ namespace Business.Logic
                 _UsuarioData = value;
             }
         }
+
+        public UsuarioLogic()
+        {
+            _UsuarioData = new UsuarioAdapter();
+        }
         public UsuarioLogic(UsuarioAdapter usuarioData)
         {
             _UsuarioData = usuarioData;
