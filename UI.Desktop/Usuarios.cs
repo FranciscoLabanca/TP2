@@ -51,5 +51,12 @@ namespace UI.Desktop
             ud.ShowDialog();
             this.Listar();
         }
+
+        private void tsbEliminar_Click(object sender, EventArgs e)
+        {
+            UsuarioDesktop ud = new UsuarioDesktop(((Usuario)dgvUsuarios.SelectedRows[0].DataBoundItem).ID, ApplicationForm.ModoForm.Baja);
+            ud.ShowDialog();
+            this.Listar();
+        }
     }
 }

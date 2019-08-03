@@ -73,11 +73,11 @@ namespace UI.Desktop
                     break;
 
                 case ModoForm.Baja:
-                    
+                    UsuarioActual.State = Usuario.States.Deleted;
                     break;
 
                 case ModoForm.Consulta:
-                    
+                    UsuarioActual.State = Usuario.States.Modified;
                     break;
             }
         }

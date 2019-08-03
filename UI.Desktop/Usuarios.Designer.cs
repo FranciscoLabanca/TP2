@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Usuarios));
             this.tcUsuarios = new System.Windows.Forms.ToolStripContainer();
             this.tlUsuarios = new System.Windows.Forms.TableLayoutPanel();
@@ -44,12 +45,16 @@
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
+            this.tp2netDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tp2_netDataSet = new UI.Desktop.tp2_netDataSet();
             this.tcUsuarios.ContentPanel.SuspendLayout();
             this.tcUsuarios.TopToolStripPanel.SuspendLayout();
             this.tcUsuarios.SuspendLayout();
             this.tlUsuarios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.tsUsuarios.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tp2netDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tp2_netDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // tcUsuarios
@@ -91,6 +96,7 @@
             // 
             this.dgvUsuarios.AllowUserToAddRows = false;
             this.dgvUsuarios.AllowUserToDeleteRows = false;
+            this.dgvUsuarios.AutoGenerateColumns = false;
             this.dgvUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -101,6 +107,7 @@
             this.email,
             this.habilitado});
             this.tlUsuarios.SetColumnSpan(this.dgvUsuarios, 2);
+            this.dgvUsuarios.DataSource = this.tp2netDataSetBindingSource;
             this.dgvUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUsuarios.Location = new System.Drawing.Point(3, 3);
             this.dgvUsuarios.MultiSelect = false;
@@ -214,6 +221,17 @@
             this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
             this.tsbEliminar.Text = "toolStripButton2";
             this.tsbEliminar.ToolTipText = "Eliminar";
+            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
+            // 
+            // tp2netDataSetBindingSource
+            // 
+            this.tp2netDataSetBindingSource.DataSource = this.tp2_netDataSet;
+            this.tp2netDataSetBindingSource.Position = 0;
+            // 
+            // tp2_netDataSet
+            // 
+            this.tp2_netDataSet.DataSetName = "tp2_netDataSet";
+            this.tp2_netDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // Usuarios
             // 
@@ -233,6 +251,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.tsUsuarios.ResumeLayout(false);
             this.tsUsuarios.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tp2netDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tp2_netDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -254,6 +274,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.DataGridViewCheckBoxColumn habilitado;
+        private System.Windows.Forms.BindingSource tp2netDataSetBindingSource;
+        private tp2_netDataSet tp2_netDataSet;
     }
 }
 
