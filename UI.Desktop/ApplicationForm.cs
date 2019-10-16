@@ -22,7 +22,7 @@ namespace UI.Desktop
         public virtual void MapearDeDatos() { }
         public virtual void MapearADatos() { }
         public virtual void GuardarCambios() { }
-        //public virtual bool Validar() { }
+        public virtual bool Validar() { return false; }
 
         public void Notificar(string titulo, string mensaje, MessageBoxButtons botones, MessageBoxIcon icono)
         {

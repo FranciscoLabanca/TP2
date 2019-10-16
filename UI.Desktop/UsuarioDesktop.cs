@@ -87,7 +87,7 @@ namespace UI.Desktop
             UsuarioLogic ul = new UsuarioLogic();
             ul.Save(UsuarioActual);
         }
-        public bool Validar()
+        public override bool Validar()
         {
             if (tbNombre.Text != null && tbApellido.Text != null && tbEmail.Text != null && tbUsuario != null && tbClave != null)
             {
@@ -124,7 +124,7 @@ namespace UI.Desktop
                 return false;
             }
         }
-/*
+/*      ¿Por que esta comentado esto?¿y de donde salió?
         public void Notificar(string titulo, string mensaje, MessageBoxButtons botones, MessageBoxIcon icono)
         {
             MessageBox.Show(mensaje, titulo, botones, icono);
