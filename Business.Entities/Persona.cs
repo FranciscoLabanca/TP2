@@ -104,9 +104,8 @@ namespace Business.Entities
         		_Telefono = value;
         	}
         }
-        /*
-        private TipoPersonas _TipoPersona;
-        public TipoPersonas TipoPersona 
+        private TiposPersona _TipoPersona;
+        public TiposPersona TipoPersona 
         {
         	get
         	{
@@ -117,6 +116,12 @@ namespace Business.Entities
         		_TipoPersona = value;
         	}
         }
-        */
+        public enum TiposPersona
+        {
+            Profesor,
+            Alumno,
+            Admin
+        }
+        
     }
 }

@@ -58,5 +58,10 @@ namespace UI.Desktop
             ud.ShowDialog();
             this.Listar();
         }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            Listar();
+        }
     }
 }

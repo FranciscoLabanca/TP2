@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Entities
 {
-    public class AlumnoInscipcion : BusinessEntity
+    public class AlumnoInscripcion : BusinessEntity
     {
     	private string _Condicion;
         public string Condicion 
