@@ -103,7 +103,7 @@ namespace UI.Desktop
 
         private void PlanesDesktop_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'tp2_netDataSet.especialidades' table. You can move, or remove it, as needed.
+            // TODO: esta línea de código carga datos en la tabla 'tp2_netDataSet.especialidades' Puede moverla o quitarla según sea necesario.
             this.especialidadesTableAdapter.Fill(this.tp2_netDataSet.especialidades);
         }
 

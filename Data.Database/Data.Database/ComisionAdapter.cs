@@ -145,6 +145,7 @@ namespace Data.Database
                 cmdSave.Parameters.Add("@desc_comision", SqlDbType.VarChar).Value = comision.Descripcion;
                 cmdSave.Parameters.Add("@anio_especialidad", SqlDbType.Int).Value = comision.AnioEspecialidad;
                 cmdSave.Parameters.Add("@id_plan", SqlDbType.Int).Value = comision.IDPlan;
+                comision.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
             }
             catch (Exception Ex)
             {

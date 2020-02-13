@@ -23,7 +23,7 @@ namespace Data.Database
             }
         }
 
-        const string consKeyDefaultCnnString = "ConnStringExpress";
+        const string consKeyDefaultCnnString = "ConnStringLocal";
         protected void OpenConnection()
         {
             string connectionString = ConfigurationManager.ConnectionStrings[consKeyDefaultCnnString].ConnectionString;

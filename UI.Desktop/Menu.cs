@@ -40,5 +40,17 @@ namespace UI.Desktop
             Planes pla = new Planes();
             pla.ShowDialog();
         }
+
+        private void materiaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Materias mat = new Materias();
+            mat.ShowDialog();
+        }
+
+        private void comisionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Comisiones com = new Comisiones();
+            com.ShowDialog();
+        }
     }
 }
