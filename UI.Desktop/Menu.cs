@@ -52,5 +52,17 @@ namespace UI.Desktop
             Comisiones com = new Comisiones();
             com.ShowDialog();
         }
+
+        private void cursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursos cur = new Cursos();
+            cur.ShowDialog();
+        }
+
+        private void modulosUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModulosUsuarios mu = new ModulosUsuarios();
+            mu.ShowDialog();
+        }
     }
 }

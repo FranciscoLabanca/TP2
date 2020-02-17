@@ -40,7 +40,8 @@ namespace UI.Desktop
             tbDesc.Text = MateriaActual.Descripcion;
             tbHsSem.Text = MateriaActual.HSSemanales.ToString();
             tbHsTot.Text = MateriaActual.HSTotales.ToString();
-            cbIdPlan.SelectedItem = MateriaActual;
+            cbEspecialidad.SelectedValue = BuscarEspecialidad(MateriaActual.IDPlan);
+            cbIdPlan.SelectedValue = MateriaActual.IDPlan;
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -69,14 +70,14 @@ namespace UI.Desktop
                     MateriaActual.Descripcion = tbDesc.Text;
                     MateriaActual.HSSemanales = Int32.Parse(tbHsSem.Text);
                     MateriaActual.HSTotales = Int32.Parse(tbHsTot.Text);
-                    MateriaActual.IDPlan = (int)((DataRowView)cbIdPlan.SelectedItem).Row.ItemArray[0];
+                    MateriaActual.IDPlan = ((Plan)cbIdPlan.SelectedItem).ID;
                     MateriaActual.State = BusinessEntity.States.New;
                     break;
                 case ModoForm.Modificacion:
                     MateriaActual.Descripcion = tbDesc.Text;
                     MateriaActual.HSSemanales = Int32.Parse(tbHsSem.Text);
                     MateriaActual.HSTotales = Int32.Parse(tbHsTot.Text);
-                    MateriaActual.IDPlan = (int)((DataRowView)cbIdPlan.SelectedItem).Row.ItemArray[0];
+                    MateriaActual.IDPlan = ((Plan)cbIdPlan.SelectedItem).ID;
                     MateriaActual.State = BusinessEntity.States.Modified;
                     break;
                 case ModoForm.Baja:
@@ -108,8 +109,22 @@ namespace UI.Desktop
 
         private void MateriaDesktop_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'tp2_netDataSet.planes' Puede moverla o quitarla según sea necesario.
-            this.planesTableAdapter.Fill(this.tp2_netDataSet.planes);
+            EspecialidadLogic el = new EspecialidadLogic();
+            List<Especialidad> especialidades = el.GetAll();
+            cbEspecialidad.DataSource = especialidades;
+            cbEspecialidad.DisplayMember = "Descripcion";
+            cbEspecialidad.ValueMember = "ID";
+
+            List<Plan> planes = new List<Plan>();
+            planes = FiltrarPorId(((Especialidad)cbEspecialidad.SelectedItem).ID);
+
+            cbIdPlan.DataSource = planes;
+            cbIdPlan.DisplayMember = "Descripcion";
+            cbIdPlan.ValueMember = "ID";
+            if (Modo == ModoForm.Modificacion || Modo == ModoForm.Baja)
+            {
+                MapearDeDatos();
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -128,6 +143,51 @@ namespace UI.Desktop
             {
                 Notificar("Verifique que todos los campos esten completos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private List<Plan> FiltrarPorId(int id)
+        {
+            List<Plan> listaPlanes = new List<Plan>();
+            List<Plan> lista = new List<Plan>();
+            PlanLogic pl = new PlanLogic();
+            listaPlanes = pl.GetAll();
+
+            foreach (Plan plan in listaPlanes)
+            {
+                if (plan.IDEspecialidad == id)
+                {
+                    lista.Add(plan);
+                }
+            }
+            return lista;
+        }
+
+        private void cbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Plan> planes = new List<Plan>();
+            planes = FiltrarPorId(((Especialidad)cbEspecialidad.SelectedItem).ID);
+
+            cbIdPlan.DataSource = planes;
+            cbIdPlan.DisplayMember = "Descripcion";
+            cbIdPlan.ValueMember = "ID";
+        }
+
+        private Especialidad BuscarEspecialidad(int id_plan)
+        {
+            PlanLogic pl = new PlanLogic();
+            Plan plan = pl.GetOne(id_plan);
+            EspecialidadLogic el = new EspecialidadLogic();
+            List<Especialidad> lista = el.GetAll();
+            Especialidad especialidad = new Especialidad();
+            foreach(Especialidad esp in lista)
+            {
+                if(plan.IDEspecialidad == esp.ID)
+                {
+                    especialidad = esp;
+                }
+            }
+            return especialidad;
+
         }
     }
 }

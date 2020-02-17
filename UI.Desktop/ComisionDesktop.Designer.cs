@@ -171,14 +171,11 @@
             // cbIdPlan
             // 
             this.cbIdPlan.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cbIdPlan.DataSource = this.planesBindingSource;
-            this.cbIdPlan.DisplayMember = "desc_plan";
             this.cbIdPlan.FormattingEnabled = true;
             this.cbIdPlan.Location = new System.Drawing.Point(455, 89);
             this.cbIdPlan.Name = "cbIdPlan";
             this.cbIdPlan.Size = new System.Drawing.Size(100, 21);
             this.cbIdPlan.TabIndex = 7;
-            this.cbIdPlan.ValueMember = "id_plan";
             // 
             // lbEspecialidad
             // 
@@ -201,6 +198,7 @@
             this.cbEspecialidad.Size = new System.Drawing.Size(100, 21);
             this.cbEspecialidad.TabIndex = 11;
             this.cbEspecialidad.ValueMember = "id_especialidad";
+            this.cbEspecialidad.SelectedIndexChanged += new System.EventHandler(this.cbEspecialidad_SelectedIndexChanged);
             // 
             // especialidadesBindingSource
             // 

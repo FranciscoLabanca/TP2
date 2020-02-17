@@ -133,8 +133,8 @@ namespace Data.Database
             {
                 OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
-                    "Insert into modulos_usuarios(id_usuario, id_modulo, alta, baja, modificacion, consulta " +
-                    "values(@id_usuario, @id_modulo, @alta, @baja, @modificacion, @consulta) " +
+                    "Insert into modulos_usuarios(id_usuario, id_modulo, alta, baja, modificacion, consulta) " +
+                    "values (@id_usuario, @id_modulo, @alta, @baja, @modificacion, @consulta) " +
                     "select @@identity", sqlConn);
                 cmdSave.Parameters.Add("@id_usuario", SqlDbType.Int).Value = mu.IdUsuario;
                 cmdSave.Parameters.Add("@id_modulo", SqlDbType.Int).Value = mu.IdModulo;

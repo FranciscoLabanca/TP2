@@ -152,15 +152,12 @@
             // comboBoxIDEspecialidad
             // 
             this.comboBoxIDEspecialidad.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.comboBoxIDEspecialidad.DataSource = this.especialidadesBindingSource;
-            this.comboBoxIDEspecialidad.DisplayMember = "desc_especialidad";
             this.comboBoxIDEspecialidad.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxIDEspecialidad.FormattingEnabled = true;
             this.comboBoxIDEspecialidad.Location = new System.Drawing.Point(369, 4);
             this.comboBoxIDEspecialidad.Name = "comboBoxIDEspecialidad";
             this.comboBoxIDEspecialidad.Size = new System.Drawing.Size(121, 21);
             this.comboBoxIDEspecialidad.TabIndex = 7;
-            this.comboBoxIDEspecialidad.ValueMember = "id_especialidad";
             // 
             // especialidadesBindingSource
             // 

@@ -42,13 +42,14 @@ namespace UI.Desktop
                     ComisionActual = new Comision();
                     ComisionActual.Descripcion = tbDesc.Text;
                     ComisionActual.AnioEspecialidad = Convert.ToInt32(tbAnioEsp.Text);
-                    ComisionActual.IDPlan = (int)((DataRowView)cbIdPlan.SelectedItem).Row.ItemArray[0];
+                    ComisionActual.IDPlan = (int)cbIdPlan.SelectedValue;
                     ComisionActual.State = BusinessEntity.States.New;
                     break;
                 case ModoForm.Modificacion:
                     ComisionActual.Descripcion = tbDesc.Text;
+                    Notificar(ComisionActual.Descripcion, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     ComisionActual.AnioEspecialidad = Convert.ToInt32(tbAnioEsp.Text);
-                    ComisionActual.IDPlan = (int)((DataRowView)cbIdPlan.SelectedItem).Row.ItemArray[0];
+                    ComisionActual.IDPlan = (int)cbIdPlan.SelectedValue;
                     ComisionActual.State = BusinessEntity.States.Modified;
                     break;
                 case ModoForm.Baja:
@@ -65,7 +66,9 @@ namespace UI.Desktop
             tbId.Text = ComisionActual.ID.ToString();
             tbDesc.Text = ComisionActual.Descripcion;
             tbAnioEsp.Text = ComisionActual.AnioEspecialidad.ToString();
-            cbIdPlan.SelectedItem = ComisionActual;
+            cbEspecialidad.SelectedValue = buscarEspecialidad(ComisionActual.IDPlan).ID;
+            cbIdPlan.SelectedValue = ComisionActual.ID;
+            
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -107,10 +110,24 @@ namespace UI.Desktop
 
         private void ComisionDesktop_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'tp2_netDataSet.especialidades' Puede moverla o quitarla según sea necesario.
-            this.especialidadesTableAdapter.Fill(this.tp2_netDataSet.especialidades);
-            // TODO: esta línea de código carga datos en la tabla 'tp2_netDataSet.planes' Puede moverla o quitarla según sea necesario.
-            planesTableAdapter.Fill(tp2_netDataSet.planes);
+            EspecialidadLogic el = new EspecialidadLogic();
+            List<Especialidad> especialidades = el.GetAll();
+            cbEspecialidad.DataSource = especialidades;
+            cbEspecialidad.DisplayMember = "Descripcion";
+            cbEspecialidad.ValueMember = "ID";
+
+            List<Plan> planes = new List<Plan>();
+            planes = FiltrarPorId(((Especialidad)cbEspecialidad.SelectedItem).ID);
+
+            cbIdPlan.DataSource = planes;
+            cbIdPlan.DisplayMember = "Descripcion";
+            cbIdPlan.ValueMember = "ID";
+
+            if(Modo == ModoForm.Modificacion || Modo == ModoForm.Baja)
+            {
+                MapearDeDatos();
+            }
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -131,20 +148,46 @@ namespace UI.Desktop
             }
         }
 
-        private List<Plan> BuscarPlanPorId(int id)
+        private List<Plan> FiltrarPorId (int id)
         {
-            //tp2_netDataSet.planesDataTable planes = new tp2_netDataSet.planesDataTable();
+            List<Plan> listaPlanes = new List<Plan>();
+            List<Plan> lista = new List<Plan>();
             PlanLogic pl = new PlanLogic();
-            List<Plan> lista = pl.GetAll();
-            List<Plan> planes = new List<Plan>();
-            foreach(Plan p in lista)
+            listaPlanes = pl.GetAll();
+
+            foreach(Plan plan in listaPlanes)
             {
-                if(p.ID == id)
+                if(plan.IDEspecialidad == id)
                 {
-                    planes.Add(p);
+                    lista.Add(plan);
                 }
             }
-            return planes;
+            return lista;
         }
+
+        private void cbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Plan> planes = new List<Plan>();
+            planes = FiltrarPorId(((Especialidad)cbEspecialidad.SelectedItem).ID);
+
+            cbIdPlan.DataSource = planes;
+            cbIdPlan.DisplayMember = "Descripcion";
+            cbIdPlan.ValueMember = "ID";
+        }
+
+        private Especialidad buscarEspecialidad (int id_plan)
+        {
+            Plan plan = new Plan();
+            PlanLogic pl = new PlanLogic();
+            plan = pl.GetOne(id_plan);
+
+            Especialidad esp = new Especialidad();
+            EspecialidadLogic el = new EspecialidadLogic();
+            esp = el.GetOne(plan.IDEspecialidad);
+
+
+            return esp;            
+        }
+
     }
 }
