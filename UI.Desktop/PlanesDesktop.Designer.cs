@@ -33,17 +33,20 @@
             this.lblID = new System.Windows.Forms.Label();
             this.lblIDEspecialidad = new System.Windows.Forms.Label();
             this.textBoxID = new System.Windows.Forms.TextBox();
-            this.comboBoxIDEspecialidad = new System.Windows.Forms.ComboBox();
-            this.especialidadesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tp2_netDataSet = new UI.Desktop.tp2_netDataSet();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.textBoxDescripcion = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.comboBoxIDEspecialidad = new System.Windows.Forms.ComboBox();
+            this.especialidadesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tp2_netDataSet = new UI.Desktop.tp2_netDataSet();
+            this.tp2_netDataSet2 = new UI.Desktop.tp2_netDataSet2();
+            this.planesTableAdapter = new UI.Desktop.tp2_netDataSet2TableAdapters.planesTableAdapter();
             this.especialidadesTableAdapter = new UI.Desktop.tp2_netDataSetTableAdapters.especialidadesTableAdapter();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.especialidadesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tp2_netDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tp2_netDataSet2)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -60,11 +63,11 @@
             this.tableLayoutPanel1.Controls.Add(this.lblID, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblIDEspecialidad, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBoxID, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.comboBoxIDEspecialidad, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblDescripcion, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBoxDescripcion, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 6, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.comboBoxIDEspecialidad, 4, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -104,28 +107,6 @@
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(100, 20);
             this.textBoxID.TabIndex = 5;
-            // 
-            // comboBoxIDEspecialidad
-            // 
-            this.comboBoxIDEspecialidad.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.comboBoxIDEspecialidad.DataSource = this.especialidadesBindingSource;
-            this.comboBoxIDEspecialidad.DisplayMember = "desc_especialidad";
-            this.comboBoxIDEspecialidad.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxIDEspecialidad.FormattingEnabled = true;
-            this.comboBoxIDEspecialidad.Location = new System.Drawing.Point(369, 4);
-            this.comboBoxIDEspecialidad.Name = "comboBoxIDEspecialidad";
-            this.comboBoxIDEspecialidad.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxIDEspecialidad.TabIndex = 7;
-            // 
-            // especialidadesBindingSource
-            // 
-            this.especialidadesBindingSource.DataMember = "especialidades";
-            this.especialidadesBindingSource.DataSource = this.tp2_netDataSet;
-            // 
-            // tp2_netDataSet
-            // 
-            this.tp2_netDataSet.DataSetName = "tp2_netDataSet";
-            this.tp2_netDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lblDescripcion
             // 
@@ -168,6 +149,35 @@
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // comboBoxIDEspecialidad
+            // 
+            this.comboBoxIDEspecialidad.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.comboBoxIDEspecialidad.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxIDEspecialidad.FormattingEnabled = true;
+            this.comboBoxIDEspecialidad.Location = new System.Drawing.Point(369, 4);
+            this.comboBoxIDEspecialidad.Name = "comboBoxIDEspecialidad";
+            this.comboBoxIDEspecialidad.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxIDEspecialidad.TabIndex = 7;
+            // 
+            // especialidadesBindingSource
+            // 
+            this.especialidadesBindingSource.DataMember = "especialidades";
+            this.especialidadesBindingSource.DataSource = this.tp2_netDataSet;
+            // 
+            // tp2_netDataSet
+            // 
+            this.tp2_netDataSet.DataSetName = "tp2_netDataSet";
+            this.tp2_netDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tp2_netDataSet2
+            // 
+            this.tp2_netDataSet2.DataSetName = "tp2_netDataSet2";
+            this.tp2_netDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // planesTableAdapter
+            // 
+            this.planesTableAdapter.ClearBeforeFill = true;
+            // 
             // especialidadesTableAdapter
             // 
             this.especialidadesTableAdapter.ClearBeforeFill = true;
@@ -189,6 +199,7 @@
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.especialidadesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tp2_netDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tp2_netDataSet2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -205,6 +216,8 @@
         private System.Windows.Forms.ComboBox comboBoxIDEspecialidad;
         private System.Windows.Forms.Button btnCancelar;
         private tp2_netDataSet tp2_netDataSet;
+        private tp2_netDataSet2 tp2_netDataSet2;
+        private tp2_netDataSet2TableAdapters.planesTableAdapter planesTableAdapter;
         private System.Windows.Forms.BindingSource especialidadesBindingSource;
         private tp2_netDataSetTableAdapters.especialidadesTableAdapter especialidadesTableAdapter;
     }

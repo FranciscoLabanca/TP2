@@ -41,12 +41,12 @@ namespace UI.Desktop
                 case ModoForm.Alta:
                     PlanActual = new Plan();
                     PlanActual.Descripcion = textBoxDescripcion.Text;
-                    PlanActual.IDEspecialidad = (int)((DataRowView)comboBoxIDEspecialidad.SelectedItem).Row.ItemArray[0];
+                    PlanActual.IDEspecialidad = ((Especialidad)comboBoxIDEspecialidad.SelectedItem).ID;
                     PlanActual.State = BusinessEntity.States.New;
                     break;
                 case ModoForm.Modificacion:
                     PlanActual.Descripcion = textBoxDescripcion.Text;
-                    PlanActual.IDEspecialidad = (int)((DataRowView)comboBoxIDEspecialidad.SelectedItem).Row.ItemArray[0];
+                    PlanActual.IDEspecialidad = ((Especialidad)comboBoxIDEspecialidad.SelectedItem).ID;
                     PlanActual.State = BusinessEntity.States.Modified;
                     break;
                 case ModoForm.Baja:
@@ -62,7 +62,7 @@ namespace UI.Desktop
         {
             textBoxID.Text = PlanActual.ID.ToString();
             textBoxDescripcion.Text = PlanActual.Descripcion;
-            comboBoxIDEspecialidad.SelectedItem = PlanActual;
+            comboBoxIDEspecialidad.SelectedValue = BuscarEspecialidadPorID(PlanActual.IDEspecialidad).ID;
             switch (Modo)
             {
                 case ModoForm.Alta:
@@ -103,8 +103,18 @@ namespace UI.Desktop
 
         private void PlanesDesktop_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'tp2_netDataSet.especialidades' table. You can move, or remove it, as needed.
-            this.especialidadesTableAdapter.Fill(this.tp2_netDataSet.especialidades);
+            List<Especialidad> especialidades = new List<Especialidad>();
+            EspecialidadLogic el = new EspecialidadLogic();
+            especialidades = el.GetAll();
+            comboBoxIDEspecialidad.DataSource = especialidades;
+            comboBoxIDEspecialidad.DisplayMember = "Descripcion";
+            comboBoxIDEspecialidad.ValueMember = "ID";
+
+            if(Modo == ModoForm.Modificacion || Modo == ModoForm.Baja)
+            {
+                MapearDeDatos();
+            }
+
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -117,6 +127,13 @@ namespace UI.Desktop
             }
             else
                 Notificar("Verifique que todos los campos esten completos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private Especialidad BuscarEspecialidadPorID (int id_esp)
+        {
+            EspecialidadLogic el = new EspecialidadLogic();
+            Especialidad especialidad = el.GetOne(id_esp);
+            return especialidad;
         }
     }
 }

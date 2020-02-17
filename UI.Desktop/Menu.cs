@@ -41,6 +41,30 @@ namespace UI.Desktop
             pla.ShowDialog();
         }
 
+        private void materiaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Materias mat = new Materias();
+            mat.ShowDialog();
+        }
+
+        private void comisionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Comisiones com = new Comisiones();
+            com.ShowDialog();
+        }
+
+        private void cursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursos cur = new Cursos();
+            cur.ShowDialog();
+        }
+
+        private void modulosUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModulosUsuarios mu = new ModulosUsuarios();
+            mu.ShowDialog();
+        }
+
         private void personasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Persona per = new Persona();
