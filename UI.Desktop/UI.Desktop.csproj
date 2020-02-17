@@ -87,6 +87,18 @@
     <Compile Include="ModuloDesktop.Designer.cs">
       <DependentUpon>ModuloDesktop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Persona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Persona.Designer.cs">
+      <DependentUpon>Persona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonaDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonaDesktop.Designer.cs">
+      <DependentUpon>PersonaDesktop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Planes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +150,12 @@
     <EmbeddedResource Include="ModuloDesktop.resx">
       <DependentUpon>ModuloDesktop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Persona.resx">
+      <DependentUpon>Persona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonaDesktop.resx">
+      <DependentUpon>PersonaDesktop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Planes.resx">
       <DependentUpon>Planes.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,6 +178,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Business.Entities.Persona+TiposPersona.datasource" />
     <None Include="Data.Database.PlanAdapter.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

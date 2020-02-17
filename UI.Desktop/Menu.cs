@@ -40,5 +40,11 @@ namespace UI.Desktop
             Planes pla = new Planes();
             pla.ShowDialog();
         }
+
+        private void personasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Persona per = new Persona();
+            per.ShowDialog();
+        }
     }
 }
