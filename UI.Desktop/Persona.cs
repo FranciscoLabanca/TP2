@@ -18,6 +18,7 @@ namespace UI.Desktop
         public Persona()
         {
             InitializeComponent();
+            dataGridViewPersona.AutoGenerateColumns = false;
         }
 
         private void Persona_Load(object sender, EventArgs e)
@@ -46,12 +47,21 @@ namespace UI.Desktop
         {
             PersonaDesktop perDesk = new PersonaDesktop();
             perDesk.ShowDialog();
+            Listar();
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
             PersonaDesktop perDesk = new PersonaDesktop(((Business.Entities.Persona)dataGridViewPersona.SelectedRows[0].DataBoundItem).ID, ApplicationForm.ModoForm.Modificacion);
             perDesk.ShowDialog();
+            Listar();
+        }
+
+        private void tsbEliminar_Click(object sender, EventArgs e)
+        {
+            PersonaDesktop perDesk = new PersonaDesktop(((Business.Entities.Persona)dataGridViewPersona.SelectedRows[0].DataBoundItem).ID, ApplicationForm.ModoForm.Baja);
+            perDesk.ShowDialog();
+            Listar();
         }
     }
 }
