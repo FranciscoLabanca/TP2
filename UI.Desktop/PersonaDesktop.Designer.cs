@@ -255,12 +255,13 @@
             // comboBoxIdPlan
             // 
             this.comboBoxIdPlan.DataSource = this.planesBindingSource;
-            this.comboBoxIdPlan.DisplayMember = "id_plan";
+            this.comboBoxIdPlan.DisplayMember = "desc_plan";
             this.comboBoxIdPlan.FormattingEnabled = true;
             this.comboBoxIdPlan.Location = new System.Drawing.Point(73, 108);
             this.comboBoxIdPlan.Name = "comboBoxIdPlan";
             this.comboBoxIdPlan.Size = new System.Drawing.Size(165, 21);
             this.comboBoxIdPlan.TabIndex = 22;
+            this.comboBoxIdPlan.ValueMember = "id_plan";
             // 
             // planesBindingSource
             // 

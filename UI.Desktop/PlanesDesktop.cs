@@ -17,6 +17,11 @@ namespace UI.Desktop
         public PlanesDesktop()
         {
             InitializeComponent();
+            /*EspecialidadLogic el = new EspecialidadLogic();
+            List<Especialidad> especialidades = el.GetAll();
+            comboBoxIDEspecialidad.DataSource = especialidades;
+            comboBoxIDEspecialidad.DisplayMember = "Descripcion";
+            comboBoxIDEspecialidad.ValueMember = "ID";*/
         }
 
         public Plan PlanActual { get; set; }
@@ -103,14 +108,17 @@ namespace UI.Desktop
 
         private void PlanesDesktop_Load(object sender, EventArgs e)
         {
-            List<Especialidad> especialidades = new List<Especialidad>();
+            // TODO: This line of code loads data into the 'tp2_netDataSet.especialidades' table. You can move, or remove it, as needed.
+            this.especialidadesTableAdapter.Fill(this.tp2_netDataSet.especialidades);
+            /* //new List<Especialidad>();
             EspecialidadLogic el = new EspecialidadLogic();
-            especialidades = el.GetAll();
+            List<Especialidad> especialidades = el.GetAll();
+            //especialidades = el.GetAll();
             comboBoxIDEspecialidad.DataSource = especialidades;
             comboBoxIDEspecialidad.DisplayMember = "Descripcion";
             comboBoxIDEspecialidad.ValueMember = "ID";
-
-            if(Modo == ModoForm.Modificacion || Modo == ModoForm.Baja)
+            */
+            if (Modo == ModoForm.Modificacion || Modo == ModoForm.Baja)
             {
                 MapearDeDatos();
             }
