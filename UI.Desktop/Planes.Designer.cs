@@ -94,7 +94,6 @@
             this.dataGridViewPlanes.AllowUserToAddRows = false;
             this.dataGridViewPlanes.AllowUserToDeleteRows = false;
             this.dataGridViewPlanes.AllowUserToResizeRows = false;
-            this.dataGridViewPlanes.AutoGenerateColumns = false;
             this.dataGridViewPlanes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewPlanes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPlanes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -102,7 +101,6 @@
             this.Descripcion,
             this.IdEspecialidad});
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridViewPlanes, 2);
-            this.dataGridViewPlanes.DataSource = this.tp2_netDataSetBindingSource;
             this.dataGridViewPlanes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewPlanes.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewPlanes.MultiSelect = false;

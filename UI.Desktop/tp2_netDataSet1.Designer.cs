@@ -6189,7 +6189,7 @@ SELECT id_inscripcion, id_alumno, id_curso, condicion, nota FROM alumnos_inscrip
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::UI.Desktop.Properties.Settings.Default.tp2_netConnectionString;
+            this._connection.ConnectionString = "ConnStringLocal";//global::UI.Desktop.Properties.Settings.Default.tp2_netConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

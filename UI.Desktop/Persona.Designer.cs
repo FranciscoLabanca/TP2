@@ -33,16 +33,6 @@
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tableLayoutPersona = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewPersona = new System.Windows.Forms.DataGridView();
-            this.idpersonaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.legajoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.direccionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechanacDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipopersonaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idplanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.personasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tp2netDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tp2_netDataSet = new UI.Desktop.tp2_netDataSet();
@@ -53,6 +43,15 @@
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.personasTableAdapter = new UI.Desktop.tp2_netDataSetTableAdapters.personasTableAdapter();
+            this.Legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoPers = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -103,22 +102,19 @@
             this.dataGridViewPersona.AllowUserToAddRows = false;
             this.dataGridViewPersona.AllowUserToDeleteRows = false;
             this.dataGridViewPersona.AllowUserToResizeRows = false;
-            this.dataGridViewPersona.AutoGenerateColumns = false;
             this.dataGridViewPersona.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewPersona.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPersona.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idpersonaDataGridViewTextBoxColumn,
-            this.legajoDataGridViewTextBoxColumn,
-            this.nombreDataGridViewTextBoxColumn,
-            this.apellidoDataGridViewTextBoxColumn,
-            this.direccionDataGridViewTextBoxColumn,
-            this.telefonoDataGridViewTextBoxColumn,
-            this.emailDataGridViewTextBoxColumn,
-            this.fechanacDataGridViewTextBoxColumn,
-            this.tipopersonaDataGridViewTextBoxColumn,
-            this.idplanDataGridViewTextBoxColumn});
+            this.Legajo,
+            this.Nombre,
+            this.Apellido,
+            this.FNacimiento,
+            this.IdPlan,
+            this.TipoPers,
+            this.Email,
+            this.Direccion,
+            this.Telefono});
             this.tableLayoutPersona.SetColumnSpan(this.dataGridViewPersona, 2);
-            this.dataGridViewPersona.DataSource = this.personasBindingSource;
             this.dataGridViewPersona.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewPersona.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewPersona.Name = "dataGridViewPersona";
@@ -126,76 +122,6 @@
             this.dataGridViewPersona.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPersona.Size = new System.Drawing.Size(794, 390);
             this.dataGridViewPersona.TabIndex = 0;
-            // 
-            // idpersonaDataGridViewTextBoxColumn
-            // 
-            this.idpersonaDataGridViewTextBoxColumn.DataPropertyName = "id_persona";
-            this.idpersonaDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.idpersonaDataGridViewTextBoxColumn.Name = "idpersonaDataGridViewTextBoxColumn";
-            this.idpersonaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // legajoDataGridViewTextBoxColumn
-            // 
-            this.legajoDataGridViewTextBoxColumn.DataPropertyName = "legajo";
-            this.legajoDataGridViewTextBoxColumn.HeaderText = "Legajo";
-            this.legajoDataGridViewTextBoxColumn.Name = "legajoDataGridViewTextBoxColumn";
-            this.legajoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // apellidoDataGridViewTextBoxColumn
-            // 
-            this.apellidoDataGridViewTextBoxColumn.DataPropertyName = "apellido";
-            this.apellidoDataGridViewTextBoxColumn.HeaderText = "Apellido";
-            this.apellidoDataGridViewTextBoxColumn.Name = "apellidoDataGridViewTextBoxColumn";
-            this.apellidoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // direccionDataGridViewTextBoxColumn
-            // 
-            this.direccionDataGridViewTextBoxColumn.DataPropertyName = "direccion";
-            this.direccionDataGridViewTextBoxColumn.HeaderText = "Direccion";
-            this.direccionDataGridViewTextBoxColumn.Name = "direccionDataGridViewTextBoxColumn";
-            this.direccionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // telefonoDataGridViewTextBoxColumn
-            // 
-            this.telefonoDataGridViewTextBoxColumn.DataPropertyName = "telefono";
-            this.telefonoDataGridViewTextBoxColumn.HeaderText = "Telefono";
-            this.telefonoDataGridViewTextBoxColumn.Name = "telefonoDataGridViewTextBoxColumn";
-            this.telefonoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechanacDataGridViewTextBoxColumn
-            // 
-            this.fechanacDataGridViewTextBoxColumn.DataPropertyName = "fecha_nac";
-            this.fechanacDataGridViewTextBoxColumn.HeaderText = "Fecha Nacimiento";
-            this.fechanacDataGridViewTextBoxColumn.Name = "fechanacDataGridViewTextBoxColumn";
-            this.fechanacDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tipopersonaDataGridViewTextBoxColumn
-            // 
-            this.tipopersonaDataGridViewTextBoxColumn.DataPropertyName = "tipo_persona";
-            this.tipopersonaDataGridViewTextBoxColumn.HeaderText = "Tipo";
-            this.tipopersonaDataGridViewTextBoxColumn.Name = "tipopersonaDataGridViewTextBoxColumn";
-            this.tipopersonaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idplanDataGridViewTextBoxColumn
-            // 
-            this.idplanDataGridViewTextBoxColumn.DataPropertyName = "id_plan";
-            this.idplanDataGridViewTextBoxColumn.HeaderText = "Id Plan";
-            this.idplanDataGridViewTextBoxColumn.Name = "idplanDataGridViewTextBoxColumn";
-            this.idplanDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // personasBindingSource
             // 
@@ -274,10 +200,74 @@
             this.tsbEliminar.Name = "tsbEliminar";
             this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
             this.tsbEliminar.Text = "toolStripButton3";
+            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
             // 
             // personasTableAdapter
             // 
             this.personasTableAdapter.ClearBeforeFill = true;
+            // 
+            // Legajo
+            // 
+            this.Legajo.DataPropertyName = "legajo";
+            this.Legajo.HeaderText = "Legajo";
+            this.Legajo.Name = "Legajo";
+            this.Legajo.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            this.Apellido.DataPropertyName = "apellido";
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            // 
+            // FNacimiento
+            // 
+            this.FNacimiento.DataPropertyName = "fechanacimiento";
+            this.FNacimiento.HeaderText = "Fecha de Nacimiento";
+            this.FNacimiento.Name = "FNacimiento";
+            this.FNacimiento.ReadOnly = true;
+            // 
+            // IdPlan
+            // 
+            this.IdPlan.DataPropertyName = "idplan";
+            this.IdPlan.HeaderText = "Nro de Plan";
+            this.IdPlan.Name = "IdPlan";
+            this.IdPlan.ReadOnly = true;
+            // 
+            // TipoPers
+            // 
+            this.TipoPers.DataPropertyName = "tipopersona";
+            this.TipoPers.HeaderText = "Tipo";
+            this.TipoPers.Name = "TipoPers";
+            this.TipoPers.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // Direccion
+            // 
+            this.Direccion.DataPropertyName = "direccion";
+            this.Direccion.HeaderText = "Direccion";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            // 
+            // Telefono
+            // 
+            this.Telefono.DataPropertyName = "telefono";
+            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
             // 
             // Persona
             // 
@@ -319,15 +309,14 @@
         private tp2_netDataSet tp2_netDataSet;
         private System.Windows.Forms.BindingSource personasBindingSource;
         private tp2_netDataSetTableAdapters.personasTableAdapter personasTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idpersonaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn legajoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn apellidoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn direccionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefonoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechanacDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipopersonaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idplanDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Legajo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FNacimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPlan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoPers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
     }
 }

@@ -104,7 +104,19 @@ namespace UI.Desktop
             textBoxTelefono.Text = PersonaActual.Telefono;
             textBoxEmail.Text = PersonaActual.Email;
             comboBoxIdPlan.SelectedItem = PersonaActual;
-            comboBoxTipo.SelectedItem = PersonaActual.TipoPersona.ToString();
+            //comboBoxTipo.SelectedItem = PersonaActual.TipoPersona.ToString();
+            switch (PersonaActual.TipoPersona)
+            {
+                case Business.Entities.Persona.TiposPersona.Alumno:
+                    comboBoxTipo.SelectedItem = "Alumno";
+                    break;
+                case Business.Entities.Persona.TiposPersona.Profesor:
+                    comboBoxTipo.SelectedItem = "Profesor";
+                    break;
+                case Business.Entities.Persona.TiposPersona.Admin:
+                    comboBoxTipo.SelectedItem = "Admin";
+                    break;
+            }
             dateTimePersona.Value = PersonaActual.FechaNacimiento;
             switch (Modo)
             {
