@@ -156,9 +156,34 @@ namespace UI.Desktop
 
         private void PersonaDesktop_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'tp2_netDataSet.planes' table. You can move, or remove it, as needed.
-            this.planesTableAdapter.Fill(this.tp2_netDataSet.planes);
+            EspecialidadLogic el = new EspecialidadLogic();
+            List<Especialidad> especialidades = el.GetAll();
+            cbEspecialidad.DataSource = especialidades;
+            cbEspecialidad.DisplayMember = "Descripcion";
+            cbEspecialidad.ValueMember = "ID";
+        }
 
+        private void cbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Plan> planes = FiltrarPorID(((Especialidad)cbEspecialidad.SelectedItem).ID);
+            comboBoxIdPlan.DataSource = planes;
+            comboBoxIdPlan.DisplayMember = "Descripcion";
+            comboBoxIdPlan.ValueMember = "ID";
+        }
+
+        private List<Plan> FiltrarPorID (int id_esp)
+        {
+            PlanLogic pl = new PlanLogic();
+            List<Plan> listaPlanes = pl.GetAll();
+            List<Plan> planes = new List<Plan>();
+            foreach(Plan p in listaPlanes)
+            {
+                if(p.IDEspecialidad == id_esp)
+                {
+                    planes.Add(p);
+                }
+            }
+            return planes;
         }
     }
 }

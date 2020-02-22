@@ -70,5 +70,17 @@ namespace UI.Desktop
             Persona per = new Persona();
             per.ShowDialog();
         }
+
+        private void inscripcionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AlumnosInscripciones ai = new AlumnosInscripciones();
+            ai.ShowDialog();
+        }
+
+        private void docentesCursoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DocentesCursos dc = new DocentesCursos();
+            dc.ShowDialog();
+        }
     }
 }

@@ -40,7 +40,7 @@ namespace UI.Desktop
             tbDesc.Text = MateriaActual.Descripcion;
             tbHsSem.Text = MateriaActual.HSSemanales.ToString();
             tbHsTot.Text = MateriaActual.HSTotales.ToString();
-            cbEspecialidad.SelectedValue = BuscarEspecialidad(MateriaActual.IDPlan);
+            cbEspecialidad.SelectedValue = BuscarEspecialidad(MateriaActual.IDPlan).ID;
             cbIdPlan.SelectedValue = MateriaActual.IDPlan;
             switch (Modo)
             {
@@ -164,12 +164,14 @@ namespace UI.Desktop
 
         private void cbEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<Plan> planes = new List<Plan>();
-            planes = FiltrarPorId(((Especialidad)cbEspecialidad.SelectedItem).ID);
-
-            cbIdPlan.DataSource = planes;
-            cbIdPlan.DisplayMember = "Descripcion";
-            cbIdPlan.ValueMember = "ID";
+            if(((Especialidad)cbEspecialidad.SelectedItem) != null)
+            {
+                List<Plan> planes = FiltrarPorId(((Especialidad)cbEspecialidad.SelectedItem).ID);
+                cbIdPlan.DataSource = planes;
+                cbIdPlan.DisplayMember = "Descripcion";
+                cbIdPlan.ValueMember = "ID";
+            }
+            
         }
 
         private Especialidad BuscarEspecialidad(int id_plan)

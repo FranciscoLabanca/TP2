@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlumnoInscripcionDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlumnoInscripcionDesktop.Designer.cs">
+      <DependentUpon>AlumnoInscripcionDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AlumnosInscripciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlumnosInscripciones.Designer.cs">
+      <DependentUpon>AlumnosInscripciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="App.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -80,6 +92,18 @@
     </Compile>
     <Compile Include="Cursos.Designer.cs">
       <DependentUpon>Cursos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DocenteCursoDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocenteCursoDesktop.Designer.cs">
+      <DependentUpon>DocenteCursoDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DocentesCursos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocentesCursos.Designer.cs">
+      <DependentUpon>DocentesCursos.cs</DependentUpon>
     </Compile>
     <Compile Include="Especialidades.cs">
       <SubType>Form</SubType>
@@ -188,6 +212,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AlumnoInscripcionDesktop.resx">
+      <DependentUpon>AlumnoInscripcionDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AlumnosInscripciones.resx">
+      <DependentUpon>AlumnosInscripciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ComisionDesktop.resx">
       <DependentUpon>ComisionDesktop.cs</DependentUpon>
     </EmbeddedResource>
@@ -199,6 +229,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cursos.resx">
       <DependentUpon>Cursos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocenteCursoDesktop.resx">
+      <DependentUpon>DocenteCursoDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocentesCursos.resx">
+      <DependentUpon>DocentesCursos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Especialidades.resx">
       <DependentUpon>Especialidades.cs</DependentUpon>
@@ -255,6 +291,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Business.Entities.DocenteCurso+TiposCargo.datasource" />
     <None Include="Business.Entities.Persona+TiposPersona.datasource" />
     <None Include="Data.Database.PlanAdapter.datasource" />
     <None Include="Properties\Settings.settings">
