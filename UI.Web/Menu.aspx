@@ -25,7 +25,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style2">
-                        <asp:Button ID="btnUsuarios" runat="server" Text="Usuarios" />
+                        <asp:Button ID="btnUsuarios" runat="server" Text="Usuarios (WIP - IB)" />
                     </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
