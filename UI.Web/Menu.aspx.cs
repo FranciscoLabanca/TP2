@@ -13,5 +13,10 @@ namespace UI.Web
         {
 
         }
+
+        protected void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("Usuarios.aspx");
+        }
     }
 }
