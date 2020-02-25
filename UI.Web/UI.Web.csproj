@@ -68,6 +68,7 @@
     <Content Include="Global.asax" />
     <Content Include="Menu.aspx" />
     <Content Include="Usuarios.aspx" />
+    <Content Include="UsuariosDesktop.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +89,13 @@
     </Compile>
     <Compile Include="Usuarios.aspx.designer.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsuariosDesktop.aspx.cs">
+      <DependentUpon>UsuariosDesktop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuariosDesktop.aspx.designer.cs">
+      <DependentUpon>UsuariosDesktop.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
