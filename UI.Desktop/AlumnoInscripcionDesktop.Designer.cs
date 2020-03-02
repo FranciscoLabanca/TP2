@@ -33,14 +33,16 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lbIdIns = new System.Windows.Forms.Label();
             this.lbIdAlumno = new System.Windows.Forms.Label();
-            this.lbIdCurso = new System.Windows.Forms.Label();
             this.lbNota = new System.Windows.Forms.Label();
-            this.lbCondicion = new System.Windows.Forms.Label();
             this.tbIdIns = new System.Windows.Forms.TextBox();
             this.tbIdAlumno = new System.Windows.Forms.TextBox();
-            this.tbIdCurso = new System.Windows.Forms.TextBox();
             this.tbNota = new System.Windows.Forms.TextBox();
             this.tbCondicion = new System.Windows.Forms.TextBox();
+            this.lbCondicion = new System.Windows.Forms.Label();
+            this.lbMateria = new System.Windows.Forms.Label();
+            this.lbComision = new System.Windows.Forms.Label();
+            this.cbMateria = new System.Windows.Forms.ComboBox();
+            this.cbComision = new System.Windows.Forms.ComboBox();
             this.tlbAlIns.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,14 +57,16 @@
             this.tlbAlIns.Controls.Add(this.btnCancelar, 3, 3);
             this.tlbAlIns.Controls.Add(this.lbIdIns, 0, 0);
             this.tlbAlIns.Controls.Add(this.lbIdAlumno, 2, 0);
-            this.tlbAlIns.Controls.Add(this.lbIdCurso, 0, 1);
             this.tlbAlIns.Controls.Add(this.lbNota, 2, 1);
-            this.tlbAlIns.Controls.Add(this.lbCondicion, 0, 2);
             this.tlbAlIns.Controls.Add(this.tbIdIns, 1, 0);
             this.tlbAlIns.Controls.Add(this.tbIdAlumno, 3, 0);
-            this.tlbAlIns.Controls.Add(this.tbIdCurso, 1, 1);
             this.tlbAlIns.Controls.Add(this.tbNota, 3, 1);
-            this.tlbAlIns.Controls.Add(this.tbCondicion, 1, 2);
+            this.tlbAlIns.Controls.Add(this.tbCondicion, 3, 2);
+            this.tlbAlIns.Controls.Add(this.lbCondicion, 2, 2);
+            this.tlbAlIns.Controls.Add(this.lbComision, 0, 1);
+            this.tlbAlIns.Controls.Add(this.cbComision, 1, 1);
+            this.tlbAlIns.Controls.Add(this.lbMateria, 0, 2);
+            this.tlbAlIns.Controls.Add(this.cbMateria, 1, 2);
             this.tlbAlIns.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlbAlIns.Location = new System.Drawing.Point(0, 0);
             this.tlbAlIns.Name = "tlbAlIns";
@@ -71,6 +75,7 @@
             this.tlbAlIns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             this.tlbAlIns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
             this.tlbAlIns.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlbAlIns.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlbAlIns.Size = new System.Drawing.Size(736, 167);
             this.tlbAlIns.TabIndex = 0;
             // 
@@ -114,16 +119,6 @@
             this.lbIdAlumno.TabIndex = 3;
             this.lbIdAlumno.Text = "Id Alumno";
             // 
-            // lbIdCurso
-            // 
-            this.lbIdCurso.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbIdCurso.AutoSize = true;
-            this.lbIdCurso.Location = new System.Drawing.Point(24, 61);
-            this.lbIdCurso.Name = "lbIdCurso";
-            this.lbIdCurso.Size = new System.Drawing.Size(46, 13);
-            this.lbIdCurso.TabIndex = 4;
-            this.lbIdCurso.Text = "Id Curso";
-            // 
             // lbNota
             // 
             this.lbNota.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -133,16 +128,6 @@
             this.lbNota.Size = new System.Drawing.Size(30, 13);
             this.lbNota.TabIndex = 5;
             this.lbNota.Text = "Nota";
-            // 
-            // lbCondicion
-            // 
-            this.lbCondicion.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbCondicion.AutoSize = true;
-            this.lbCondicion.Location = new System.Drawing.Point(16, 106);
-            this.lbCondicion.Name = "lbCondicion";
-            this.lbCondicion.Size = new System.Drawing.Size(54, 13);
-            this.lbCondicion.TabIndex = 6;
-            this.lbCondicion.Text = "Condicion";
             // 
             // tbIdIns
             // 
@@ -161,14 +146,6 @@
             this.tbIdAlumno.Size = new System.Drawing.Size(100, 20);
             this.tbIdAlumno.TabIndex = 8;
             // 
-            // tbIdCurso
-            // 
-            this.tbIdCurso.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbIdCurso.Location = new System.Drawing.Point(76, 57);
-            this.tbIdCurso.Name = "tbIdCurso";
-            this.tbIdCurso.Size = new System.Drawing.Size(100, 20);
-            this.tbIdCurso.TabIndex = 9;
-            // 
             // tbNota
             // 
             this.tbNota.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -180,10 +157,58 @@
             // tbCondicion
             // 
             this.tbCondicion.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbCondicion.Location = new System.Drawing.Point(76, 103);
+            this.tbCondicion.Location = new System.Drawing.Point(443, 103);
             this.tbCondicion.Name = "tbCondicion";
             this.tbCondicion.Size = new System.Drawing.Size(100, 20);
             this.tbCondicion.TabIndex = 11;
+            // 
+            // lbCondicion
+            // 
+            this.lbCondicion.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbCondicion.AutoSize = true;
+            this.lbCondicion.Location = new System.Drawing.Point(383, 106);
+            this.lbCondicion.Name = "lbCondicion";
+            this.lbCondicion.Size = new System.Drawing.Size(54, 13);
+            this.lbCondicion.TabIndex = 6;
+            this.lbCondicion.Text = "Condicion";
+            // 
+            // lbMateria
+            // 
+            this.lbMateria.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbMateria.AutoSize = true;
+            this.lbMateria.Location = new System.Drawing.Point(28, 106);
+            this.lbMateria.Name = "lbMateria";
+            this.lbMateria.Size = new System.Drawing.Size(42, 13);
+            this.lbMateria.TabIndex = 12;
+            this.lbMateria.Text = "Materia";
+            // 
+            // lbComision
+            // 
+            this.lbComision.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbComision.AutoSize = true;
+            this.lbComision.Location = new System.Drawing.Point(21, 61);
+            this.lbComision.Name = "lbComision";
+            this.lbComision.Size = new System.Drawing.Size(49, 13);
+            this.lbComision.TabIndex = 14;
+            this.lbComision.Text = "Comision";
+            // 
+            // cbMateria
+            // 
+            this.cbMateria.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbMateria.FormattingEnabled = true;
+            this.cbMateria.Location = new System.Drawing.Point(76, 102);
+            this.cbMateria.Name = "cbMateria";
+            this.cbMateria.Size = new System.Drawing.Size(121, 21);
+            this.cbMateria.TabIndex = 15;
+            // 
+            // cbComision
+            // 
+            this.cbComision.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbComision.FormattingEnabled = true;
+            this.cbComision.Location = new System.Drawing.Point(76, 57);
+            this.cbComision.Name = "cbComision";
+            this.cbComision.Size = new System.Drawing.Size(121, 21);
+            this.cbComision.TabIndex = 16;
             // 
             // AlumnoInscripcionDesktop
             // 
@@ -193,6 +218,7 @@
             this.Controls.Add(this.tlbAlIns);
             this.Name = "AlumnoInscripcionDesktop";
             this.Text = "AlumnoInscripcionDesktop";
+            this.Load += new System.EventHandler(this.AlumnoInscripcionDesktop_Load);
             this.tlbAlIns.ResumeLayout(false);
             this.tlbAlIns.PerformLayout();
             this.ResumeLayout(false);
@@ -206,13 +232,15 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lbIdIns;
         private System.Windows.Forms.Label lbIdAlumno;
-        private System.Windows.Forms.Label lbIdCurso;
         private System.Windows.Forms.Label lbNota;
         private System.Windows.Forms.Label lbCondicion;
         private System.Windows.Forms.TextBox tbIdIns;
         private System.Windows.Forms.TextBox tbIdAlumno;
-        private System.Windows.Forms.TextBox tbIdCurso;
         private System.Windows.Forms.TextBox tbNota;
         private System.Windows.Forms.TextBox tbCondicion;
+        private System.Windows.Forms.Label lbMateria;
+        private System.Windows.Forms.Label lbComision;
+        private System.Windows.Forms.ComboBox cbMateria;
+        private System.Windows.Forms.ComboBox cbComision;
     }
 }

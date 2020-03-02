@@ -52,5 +52,10 @@ namespace Business.Logic
         {
             DataInscripcion.Save(inscripcion);
         }
+
+        public List<AlumnoInscripcion> GetInscripciones(int id)
+        {
+            return DataInscripcion.GetInscripciones(id);
+        }
     }
 }

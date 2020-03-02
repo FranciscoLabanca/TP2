@@ -19,10 +19,28 @@ namespace UI.Desktop
             InitializeComponent();
         }
 
+        public Persona PersonaActual { get; set; }
+
+        public AlumnosInscripciones(Persona persona)
+        {
+            PersonaActual = persona;
+        }
+
+
+
         private void Listar()
         {
-            AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
-            dgvAlIns.DataSource = ail.GetAll();
+            if(PersonaActual != null)
+            {
+                AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
+                dgvAlIns.DataSource = ail.GetInscripciones(PersonaActual.ID);
+            }
+            else
+            {
+                AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
+                dgvAlIns.DataSource = ail.GetAll();
+            }
+            
         }
 
         private void AlumnosInscripciones_Load(object sender, EventArgs e)

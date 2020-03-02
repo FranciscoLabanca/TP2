@@ -21,9 +21,22 @@ namespace UI.Desktop
 
         public AlumnoInscripcion InsActual { get; set; }
 
+        public Persona PersonaActual { set; get; }
+
         public AlumnoInscripcionDesktop (ModoForm modo) : this()
         {
             Modo = modo;
+        }
+
+        public AlumnoInscripcionDesktop(ModoForm modo, Persona persona) : this()
+        {
+            Modo = modo;
+            PersonaActual = persona;
+            tbIdAlumno.Text = persona.ID.ToString();
+            tbIdAlumno.ReadOnly = true;
+            tbNota.ReadOnly = true;
+            tbCondicion.ReadOnly = true;
+            
         }
 
         public AlumnoInscripcionDesktop (int id, ModoForm modo) : this()
@@ -37,7 +50,7 @@ namespace UI.Desktop
         public override void MapearDeDatos()
         {
             tbIdAlumno.Text = InsActual.IDAlumno.ToString();
-            tbIdCurso.Text = InsActual.IDCurso.ToString();
+            //tbIdCurso.Text = InsActual.IDCurso.ToString();
             tbIdIns.Text = InsActual.ID.ToString();
             tbNota.Text = InsActual.Nota.ToString();
             tbCondicion.Text = InsActual.Condicion;
@@ -62,7 +75,7 @@ namespace UI.Desktop
             }
         }
 
-        public override void MapearADatos()
+        public void MapearADatos(int id_curso)
         {
             switch (Modo)
             {
@@ -70,15 +83,14 @@ namespace UI.Desktop
                     AlumnoInscripcion inscripcion = new AlumnoInscripcion();
                     InsActual = inscripcion;
                     InsActual.IDAlumno = Convert.ToInt32(tbIdAlumno.Text);
-                    InsActual.IDCurso = Convert.ToInt32(tbIdCurso.Text);
-                    InsActual.Nota = Convert.ToInt32(tbNota.Text);
-                    InsActual.Condicion = tbCondicion.Text;
+                    InsActual.IDCurso = id_curso;
+                    InsActual.Condicion = "Cursando";
                     InsActual.State = BusinessEntity.States.New;
                     break;
 
                 case ModoForm.Modificacion:
                     InsActual.IDAlumno = Convert.ToInt32(tbIdAlumno.Text);
-                    InsActual.IDCurso = Convert.ToInt32(tbIdCurso.Text);
+                    InsActual.IDCurso = id_curso;
                     InsActual.Nota = Convert.ToInt32(tbNota.Text);
                     InsActual.Condicion = tbCondicion.Text;
                     InsActual.State = BusinessEntity.States.Modified;
@@ -94,16 +106,16 @@ namespace UI.Desktop
             }
         }
 
-        public override void GuardarCambios()
+        public void GuardarCambios(int id_curso)
         {
-            MapearADatos();
+            MapearADatos(id_curso);
             AlumnoInscripcionLogic ail = new AlumnoInscripcionLogic();
             ail.Save(InsActual);
         }
 
-        public override bool Validar()
+        /*public override bool Validar()
         {
-            if(tbCondicion.Text == "" || tbIdAlumno.Text == "" || tbIdCurso.Text == "" || tbCondicion.Text == "")
+            if(tbCondicion.Text == "" || tbIdAlumno.Text == "" || tbCondicion.Text == "")
             {
                 return false;
             }
@@ -111,24 +123,58 @@ namespace UI.Desktop
             {
                 return true;
             }
-        }
+        }*/
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            int id_curso = BuscarCurso(((Materia)cbMateria.SelectedItem).ID, ((Comision)cbComision.SelectedItem).ID);
+            if(id_curso == 0)
             {
-                GuardarCambios();
-                Close();
+                Notificar("Esa materia no existe en esa comision", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                Notificar("Faltan completar campos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                GuardarCambios(id_curso);
+                Close();
             }
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
+
+        private void AlumnoInscripcionDesktop_Load(object sender, EventArgs e)
+        {
+            MateriaLogic ml = new MateriaLogic();
+            List<Materia> materias = ml.GetMateriasByPlan(PersonaActual.IDPlan);
+            cbMateria.DataSource = materias;
+            cbMateria.DisplayMember = "Descripcion";
+            cbMateria.ValueMember = "ID";
+
+            ComisionLogic cl = new ComisionLogic();
+            List<Comision> comisions = cl.GetComisionByPlan(PersonaActual.IDPlan);
+            cbComision.DataSource = comisions;
+            cbComision.DisplayMember = "Descripcion";
+            cbComision.ValueMember = "ID";
+        }
+
+        private int BuscarCurso(int id_materia, int id_comision)
+        {
+            CursoLogic cl = new CursoLogic();
+            List<Curso> cursos = cl.GetAll();
+            int id_curso = 0;
+            foreach(Curso c in cursos)
+            {
+                if(c.IDComision == id_comision && c.IDMateria == id_materia)
+                {
+                    id_curso = c.ID;
+                    break;
+                }
+            }
+            return id_curso;
+        }
+
     }
 }

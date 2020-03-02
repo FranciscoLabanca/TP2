@@ -52,5 +52,10 @@ namespace Business.Logic
         {
             DataPersona.Save(persona);
         }
+
+        public List<Persona> GetDocentes()
+        {
+            return DataPersona.GetDocentes();
+        }
     }
 }

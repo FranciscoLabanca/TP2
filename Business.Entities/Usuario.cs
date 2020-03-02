@@ -80,5 +80,7 @@ namespace Business.Entities
         		_Habilitado = value;
         	}
         }
+
+        public int IDPersona { set; get; }
     }
 }

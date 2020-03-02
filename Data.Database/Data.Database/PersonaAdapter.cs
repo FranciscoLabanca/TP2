@@ -49,7 +49,7 @@ namespace Data.Database
             return Personas;
         }
 
-        public Business.Entities.Persona GetOne(int ID)
+        public Persona GetOne(int ID)
         {
             Persona prsna = new Persona();
             try
@@ -183,6 +183,44 @@ namespace Data.Database
             {
                 this.CloseConnection();
             }
+        }
+
+        public List<Persona> GetDocentes()
+        {
+            List<Persona> Personas = new List<Persona>();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdPersonas = new SqlCommand("select * from personas where tipo_persona = 0", sqlConn);
+                SqlDataReader drPersonas = cmdPersonas.ExecuteReader();
+                while (drPersonas.Read())
+                {
+                    Persona persona = new Persona();
+                    persona.ID = (int)drPersonas["id_persona"];
+                    persona.Nombre = (string)drPersonas["nombre"];
+                    persona.Apellido = (string)drPersonas["apellido"];
+                    persona.Direccion = (string)drPersonas["direccion"];
+                    persona.Email = (string)drPersonas["email"];
+                    persona.Telefono = (string)drPersonas["telefono"];
+                    persona.FechaNacimiento = (DateTime)drPersonas["fecha_nac"];
+                    persona.Legajo = (int)drPersonas["legajo"];
+                    persona.TipoPersona = (Business.Entities.Persona.TiposPersona)drPersonas["tipo_persona"];//(string)drPersonas["tipo_persona"];
+                    persona.IDPlan = (int)drPersonas["id_plan"];
+                    Personas.Add(persona);
+                }
+                drPersonas.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada =
+                new Exception("Error al recuperar lista de personas", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                this.CloseConnection();
+            }
+            return Personas;
         }
     }
 }

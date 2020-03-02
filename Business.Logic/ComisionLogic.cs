@@ -52,5 +52,10 @@ namespace Business.Logic
         {
             ComisionData.Save(comision);
         }
+
+        public List<Comision> GetComisionByPlan(int id)
+        {
+            return ComisionData.GetComisionByPlan(id);
+        }
     }
 }

@@ -194,14 +194,11 @@
             // cbUsuario
             // 
             this.cbUsuario.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cbUsuario.DataSource = this.usuariosBindingSource;
-            this.cbUsuario.DisplayMember = "nombre_usuario";
             this.cbUsuario.FormattingEnabled = true;
             this.cbUsuario.Location = new System.Drawing.Point(483, 15);
             this.cbUsuario.Name = "cbUsuario";
             this.cbUsuario.Size = new System.Drawing.Size(97, 21);
             this.cbUsuario.TabIndex = 10;
-            this.cbUsuario.ValueMember = "id_usuario";
             // 
             // usuariosBindingSource
             // 
@@ -216,14 +213,11 @@
             // cbModulo
             // 
             this.cbModulo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cbModulo.DataSource = this.modulosBindingSource;
-            this.cbModulo.DisplayMember = "desc_modulo";
             this.cbModulo.FormattingEnabled = true;
             this.cbModulo.Location = new System.Drawing.Point(83, 67);
             this.cbModulo.Name = "cbModulo";
             this.cbModulo.Size = new System.Drawing.Size(100, 21);
             this.cbModulo.TabIndex = 11;
-            this.cbModulo.ValueMember = "id_modulo";
             // 
             // modulosBindingSource
             // 

@@ -100,12 +100,11 @@ namespace Data.Database
             {
                 OpenConnection();
                 SqlCommand cmdSave = new SqlCommand(
-                    "insert into alumnos_inscripciones(id_alumno, id_curso, condicion, nota) " + 
-                    "values(@id_alumno, @id_curso, @condiciom, @nota) select @@identity", sqlConn);
+                    "insert into alumnos_inscripciones(id_alumno, id_curso, condicion) " + 
+                    "values(@id_alumno, @id_curso, @condicion) select @@identity", sqlConn);
                 cmdSave.Parameters.Add("@id_alumno", SqlDbType.Int).Value = ins.IDAlumno;
                 cmdSave.Parameters.Add("@id_curso", SqlDbType.Int).Value = ins.IDCurso;
                 cmdSave.Parameters.Add("@condicion", SqlDbType.VarChar, 50).Value = ins.Condicion;
-                cmdSave.Parameters.Add("@nota", SqlDbType.Int).Value = ins.Nota;
                 ins.ID = Decimal.ToInt32((decimal)cmdSave.ExecuteScalar());
             }
             catch (Exception Ex)
@@ -159,6 +158,39 @@ namespace Data.Database
                 Insert(ins);
             }
             ins.State = BusinessEntity.States.Unmodified;
+        }
+
+        public List<AlumnoInscripcion> GetInscripciones (int id)
+        {
+            List<AlumnoInscripcion> inscripciones = new List<AlumnoInscripcion>();
+            try
+            {
+                OpenConnection();
+                SqlCommand cmdInscripcion = new SqlCommand("select * from alumnos_inscripciones where id_alumno = @id", sqlConn);
+                cmdInscripcion.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                SqlDataReader drInscripcion = cmdInscripcion.ExecuteReader();
+                while (drInscripcion.Read())
+                {
+                    AlumnoInscripcion ai = new AlumnoInscripcion();
+                    ai.ID = (int)drInscripcion["id_inscripcion"];
+                    ai.IDAlumno = (int)drInscripcion["id_alumno"];
+                    ai.IDCurso = (int)drInscripcion["id_curso"];
+                    ai.Condicion = (string)drInscripcion["condicion"];
+                    ai.Nota = (int)drInscripcion["nota"];
+                    inscripciones.Add(ai);
+                }
+                drInscripcion.Close();
+            }
+            catch (Exception Ex)
+            {
+                Exception ExcepcionManejada = new Exception("Error al recuperar lista de inscripciones", Ex);
+                throw ExcepcionManejada;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return inscripciones;
         }
     }
 }

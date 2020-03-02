@@ -153,7 +153,7 @@ namespace Data.Database
             }
             else if(docenteCurso.State == BusinessEntity.States.New)
             {
-                Update(docenteCurso);
+                Insert(docenteCurso);
             }
             docenteCurso.State = BusinessEntity.States.Unmodified;
         }

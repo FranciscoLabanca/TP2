@@ -13,9 +13,9 @@ using Business.Entities;
 
 namespace UI.Desktop
 {
-    public partial class Persona : Form
+    public partial class Personas : Form
     {
-        public Persona()
+        public Personas()
         {
             InitializeComponent();
             dataGridViewPersona.AutoGenerateColumns = false;

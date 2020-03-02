@@ -117,6 +117,12 @@
     <Compile Include="EspecialidadDesktop.Designer.cs">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="MateriaDesktop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,18 @@
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuAlumno.Designer.cs">
+      <DependentUpon>MenuAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuProfesor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuProfesor.Designer.cs">
+      <DependentUpon>MenuProfesor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,11 +165,11 @@
     <Compile Include="ModuloDesktop.Designer.cs">
       <DependentUpon>ModuloDesktop.cs</DependentUpon>
     </Compile>
-    <Compile Include="Persona.cs">
+    <Compile Include="Personas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Persona.Designer.cs">
-      <DependentUpon>Persona.cs</DependentUpon>
+    <Compile Include="Personas.Designer.cs">
+      <DependentUpon>Personas.cs</DependentUpon>
     </Compile>
     <Compile Include="PersonaDesktop.cs">
       <SubType>Form</SubType>
@@ -242,6 +260,9 @@
     <EmbeddedResource Include="EspecialidadDesktop.resx">
       <DependentUpon>EspecialidadDesktop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MateriaDesktop.resx">
       <DependentUpon>MateriaDesktop.cs</DependentUpon>
     </EmbeddedResource>
@@ -251,14 +272,20 @@
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MenuAlumno.resx">
+      <DependentUpon>MenuAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuProfesor.resx">
+      <DependentUpon>MenuProfesor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos.resx">
       <DependentUpon>Modulos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloDesktop.resx">
       <DependentUpon>ModuloDesktop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Persona.resx">
-      <DependentUpon>Persona.cs</DependentUpon>
+    <EmbeddedResource Include="Personas.resx">
+      <DependentUpon>Personas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PersonaDesktop.resx">
       <DependentUpon>PersonaDesktop.cs</DependentUpon>

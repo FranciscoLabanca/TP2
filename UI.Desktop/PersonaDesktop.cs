@@ -46,7 +46,7 @@ namespace UI.Desktop
                     PersonaActual.Direccion = textBoxDireccion.Text;
                     PersonaActual.Telefono = textBoxTelefono.Text;
                     PersonaActual.FechaNacimiento = dateTimePersona.Value;
-                    PersonaActual.IDPlan = (int)((DataRowView)comboBoxIdPlan.SelectedItem).Row.ItemArray[0];
+                    PersonaActual.IDPlan = ((Plan)comboBoxIdPlan.SelectedItem).ID;
                     PersonaActual.Legajo = int.Parse(textBoxLegajo.Text);
                     PersonaActual.Email = textBoxEmail.Text;
                     switch(comboBoxTipo.Text)
@@ -69,7 +69,7 @@ namespace UI.Desktop
                     PersonaActual.Direccion = textBoxDireccion.Text;
                     PersonaActual.Telefono = textBoxTelefono.Text;
                     PersonaActual.FechaNacimiento = dateTimePersona.Value;
-                    PersonaActual.IDPlan = (int)((DataRowView)comboBoxIdPlan.SelectedItem).Row.ItemArray[0];
+                    PersonaActual.IDPlan = ((Plan)comboBoxIdPlan.SelectedItem).ID;
                     PersonaActual.Legajo = int.Parse(textBoxLegajo.Text);
                     PersonaActual.Email = textBoxEmail.Text;
                     switch (comboBoxTipo.Text)
@@ -142,6 +142,7 @@ namespace UI.Desktop
             MapearADatos();
             PersonaLogic pl = new PersonaLogic();
             pl.Save(PersonaActual);
+            CrearUsuario();
         }
         public override bool Validar()
         {
@@ -196,6 +197,36 @@ namespace UI.Desktop
                 }
             }
             return planes;
+        }
+
+        private void CrearUsuario()
+        {
+            if(Modo == ModoForm.Alta)
+            {
+                Usuario usuario = new Usuario
+                {
+                    Apellido = PersonaActual.Apellido,
+                    Nombre = PersonaActual.Nombre,
+                    NombreUsuario = PersonaActual.Legajo.ToString(),
+                    EMail = PersonaActual.Email,
+                    Habilitado = true,
+                    Clave = PersonaActual.FechaNacimiento.ToShortDateString(),
+                    IDPersona = PersonaActual.ID,
+                    State = BusinessEntity.States.New
+                };
+                UsuarioLogic ul = new UsuarioLogic();
+                ul.Save(usuario);
+            }
+            else if(Modo == ModoForm.Modificacion)
+            {
+                UsuarioLogic ul = new UsuarioLogic();
+                Usuario usuario = ul.GetOneByIdPersona(PersonaActual.ID);
+                usuario.Nombre = PersonaActual.Nombre;
+                usuario.Apellido = PersonaActual.Apellido;
+                usuario.EMail = PersonaActual.Email;
+                usuario.State = BusinessEntity.States.Modified;
+                ul.Save(usuario);
+            }
         }
     }
 }

@@ -53,5 +53,10 @@ namespace Business.Logic
         {
             MateriaData.Save(materia);
         }
+
+        public List<Materia> GetMateriasByPlan (int id)
+        {
+            return MateriaData.GerMateriaByPlan(id);
+        }
     }
 }

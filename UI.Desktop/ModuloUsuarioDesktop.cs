@@ -34,10 +34,17 @@ namespace UI.Desktop
 
         private void ModuloUsuarioDesktop_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'tp2_netDataSet.modulos' Puede moverla o quitarla según sea necesario.
-            this.modulosTableAdapter.Fill(this.tp2_netDataSet.modulos);
-            // TODO: esta línea de código carga datos en la tabla 'tp2_netDataSet.usuarios' Puede moverla o quitarla según sea necesario.
-            this.usuariosTableAdapter.Fill(this.tp2_netDataSet.usuarios);
+            UsuarioLogic ul = new UsuarioLogic();
+            List<Usuario> usuarios = ul.GetAll();
+            cbUsuario.DataSource = usuarios;
+            cbUsuario.DisplayMember = "NombreUsuario";
+            cbUsuario.ValueMember = "ID";
+
+            ModuloLogic ml = new ModuloLogic();
+            List<Modulo> modulos = ml.GetAll();
+            cbModulo.DataSource = modulos;
+            cbModulo.DisplayMember = "Descripcion";
+            cbModulo.ValueMember = "ID";
         }
 
         public ModuloUsuario MUActual { set; get; }

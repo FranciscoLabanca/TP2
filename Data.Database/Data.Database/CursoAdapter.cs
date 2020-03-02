@@ -79,7 +79,7 @@ namespace Data.Database
             try
             {
                 OpenConnection();
-                SqlCommand cmdDelete = new SqlCommand("delete curso where id_curso = @id_curso", sqlConn);
+                SqlCommand cmdDelete = new SqlCommand("delete cursos where id_curso = @id_curso", sqlConn);
                 cmdDelete.Parameters.Add("@id_curso", SqlDbType.Int).Value = id;
                 cmdDelete.ExecuteNonQuery();
             }

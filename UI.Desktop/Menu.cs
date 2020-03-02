@@ -67,7 +67,7 @@ namespace UI.Desktop
 
         private void personasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Persona per = new Persona();
+            Personas per = new Personas();
             per.ShowDialog();
         }
 

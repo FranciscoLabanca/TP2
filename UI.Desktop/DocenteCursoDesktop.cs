@@ -26,6 +26,7 @@ namespace UI.Desktop
             Modo = modo;
         }
 
+
         public DocenteCursoDesktop (int id, ModoForm modo) : this()
         {
             Modo = modo;
@@ -37,8 +38,8 @@ namespace UI.Desktop
         public override void MapearDeDatos()
         {
             tbIdDictado.Text = DocCursoActual.ID.ToString();
-            tbIdCurso.Text = DocCursoActual.IDCurso.ToString();
-            tbIdDocente.Text = DocCursoActual.IDDocente.ToString();
+            //tbIdCurso.Text = DocCursoActual.IDCurso.ToString();
+            //tbIdDocente.Text = DocCursoActual.IDDocente.ToString();
             cbCargo.SelectedItem = DocCursoActual.Cargo;
 
             switch (Modo)
@@ -61,22 +62,22 @@ namespace UI.Desktop
             }
         }
 
-        public override void MapearADatos()
+        public void MapearADatos(int id_curso)
         {
             switch (Modo)
             {
                 case ModoForm.Alta:
                     DocenteCurso dc = new DocenteCurso();
                     DocCursoActual = dc;
-                    DocCursoActual.IDCurso = Convert.ToInt32(tbIdCurso.Text);
-                    DocCursoActual.IDDocente = Convert.ToInt32(tbIdDocente.Text);
+                    DocCursoActual.IDCurso = id_curso;
+                    DocCursoActual.IDDocente = ((Persona)cbDocente.SelectedItem).ID;
                     DocCursoActual.Cargo = (DocenteCurso.TiposCargo)cbCargo.SelectedItem;
                     DocCursoActual.State = BusinessEntity.States.New;
                     break;
 
                 case ModoForm.Modificacion:
-                    DocCursoActual.IDCurso = Convert.ToInt32(tbIdCurso.Text);
-                    DocCursoActual.IDDocente = Convert.ToInt32(tbIdDocente);
+                    DocCursoActual.IDCurso = id_curso;
+                    DocCursoActual.IDDocente = ((Persona)cbDocente.SelectedItem).ID;
                     DocCursoActual.Cargo = (DocenteCurso.TiposCargo)cbCargo.SelectedItem;
                     DocCursoActual.State = BusinessEntity.States.Modified;
                     break;
@@ -91,16 +92,17 @@ namespace UI.Desktop
             }
         }
 
-        public override void GuardarCambios()
+        public void GuardarCambios(int id_curso)
         {
-            MapearADatos();
+            MapearADatos(id_curso);
             DocenteCursoLogic dcl = new DocenteCursoLogic();
             dcl.Save(DocCursoActual);
         }
 
         public override bool Validar()
         {
-            if (tbIdCurso.Text == "" || tbIdDocente.Text == "" || cbCargo.Text == "")
+
+            if (cbCargo.Text == "")
             {
                 return false;
             }
@@ -113,20 +115,62 @@ namespace UI.Desktop
         private void DocenteCursoDesktop_Load(object sender, EventArgs e)
         {
             cbCargo.DataSource = Enum.GetValues(typeof(DocenteCurso.TiposCargo));
+            PersonaLogic pl = new PersonaLogic();
+            List<Persona> profesores = pl.GetDocentes();
+            cbDocente.DataSource = profesores;
+            cbDocente.DisplayMember = "Legajo";
+            cbDocente.ValueMember = "ID";
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (Validar())
+            int id_curso = BuscarCurso(((Materia)cbMateria.SelectedItem).ID, ((Comision)cbComision.SelectedItem).ID);
+            if(id_curso == 0)
             {
-                GuardarCambios();
+                Notificar("Esa materia no existe en esa comision", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                GuardarCambios(id_curso);
                 Close();
             }
+            
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void cbDocente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MateriaLogic ml = new MateriaLogic();
+            List<Materia> materias = ml.GetMateriasByPlan(((Persona)cbDocente.SelectedItem).IDPlan);
+            cbMateria.DataSource = materias;
+            cbMateria.DisplayMember = "Descripcion";
+            cbMateria.ValueMember = "ID";
+
+            ComisionLogic cl = new ComisionLogic();
+            List<Comision> comisiones = cl.GetComisionByPlan(((Persona)cbDocente.SelectedItem).IDPlan);
+            cbComision.DataSource = comisiones;
+            cbComision.DisplayMember = "Descripcion";
+            cbComision.ValueMember = "ID";
+        }
+
+        private int BuscarCurso(int id_materia, int id_comision)
+        {
+            CursoLogic cl = new CursoLogic();
+            List<Curso> cursos = cl.GetAll();
+            int id_curso = 0;
+            foreach (Curso c in cursos)
+            {
+                if (c.IDComision == id_comision && c.IDMateria == id_materia)
+                {
+                    id_curso = c.ID;
+                    break;
+                }
+            }
+            return id_curso;
         }
     }
 }
