@@ -49,6 +49,7 @@ namespace Data.Database
             {
                 OpenConnection();
                 SqlCommand cmdDC = new SqlCommand("select * from docentes_cursos where id_dictado = @id", sqlConn);
+                cmdDC.Parameters.Add("@id", SqlDbType.Int).Value = ID;
                 SqlDataReader drDC = cmdDC.ExecuteReader();
                 while (drDC.Read())
                 {
